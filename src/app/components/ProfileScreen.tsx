@@ -103,7 +103,10 @@ export function ProfileScreen({ onNavigate, onLogout }: ProfileScreenProps) {
             <ChevronRight className="w-5 h-5 text-gray-400" />
           </button>
 
-          <button className="w-full px-5 py-4 flex items-center gap-4 hover:bg-gray-50 transition-colors">
+          <button 
+            onClick={() => onNavigate('settings')}
+            className="w-full px-5 py-4 flex items-center gap-4 hover:bg-gray-50 transition-colors"
+          >
             <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
               <Settings className="w-5 h-5 text-gray-600" />
             </div>

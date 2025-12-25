@@ -24,10 +24,7 @@ export function BookSessionScreen({ onNavigate }: BookSessionScreenProps) {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleConfirm = () => {
-    setShowConfirmation(true);
-    setTimeout(() => {
-      onNavigate('home');
-    }, 2000);
+    onNavigate('bookingConfirmation');
   };
 
   if (showConfirmation) {
@@ -37,11 +34,11 @@ export function BookSessionScreen({ onNavigate }: BookSessionScreenProps) {
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="w-8 h-8 text-green-600" />
           </div>
-          <h2 className="mb-2">Session Booked!</h2>
+          <h2 className="mb-2">Processing...</h2>
           <p className="text-gray-600 mb-4">
-            Your session with Dr. Ahmed Hassan is confirmed for December {selectedDate} at {selectedTime}
+            Confirming your session booking
           </p>
-          <p className="text-sm text-blue-600">Redirecting to home...</p>
+          <p className="text-sm text-blue-600">Please wait...</p>
         </div>
       </div>
     );

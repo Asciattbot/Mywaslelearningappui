@@ -3,7 +3,7 @@ import { Calendar, Search, BookOpen, MessageCircle, User, Video } from 'lucide-r
 import logo from 'figma:asset/b1697e26fcecd4b41bb343f74484b2b69f93e55b.png';
 
 interface HomeScreenProps {
-  onNavigate: (screen: string) => void;
+  onNavigate: (screen: string, subject?: string) => void;
 }
 
 export function HomeScreen({ onNavigate }: HomeScreenProps) {
@@ -33,10 +33,10 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
           <div className="flex items-center justify-between">
             <p className="text-sm text-blue-600">Today, 4:00 PM</p>
             <button 
-              onClick={() => onNavigate('liveClass')}
+              onClick={() => onNavigate('sessionDetails')}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors"
             >
-              Join Now
+              View Details
             </button>
           </div>
         </div>
@@ -74,7 +74,11 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
               { subject: 'Physics', progress: 65, tutor: 'Dr. Fatima Ali' },
               { subject: 'Chemistry', progress: 40, tutor: 'Prof. Omar Said' },
             ].map((course, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow p-4">
+              <button
+                key={idx}
+                onClick={() => onNavigate('courseDetail', course.subject)}
+                className="w-full bg-white rounded-xl shadow p-4 hover:shadow-lg transition-shadow text-left"
+              >
                 <div className="flex justify-between mb-2">
                   <h3>{course.subject}</h3>
                   <span className="text-sm text-gray-600">{course.progress}%</span>
@@ -86,7 +90,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
                     style={{ width: `${course.progress}%` }}
                   />
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
